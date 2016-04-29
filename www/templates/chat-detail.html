@@ -1,14 +1,58 @@
-<!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
-  The FriendsCtrl pulls data from the Friends service (service.js)
-  The Friends service returns an array of friend data
--->
-<ion-view view-title="{{chat.name}}">
+
+<ion-view view-title="Editar">
   <ion-content class="padding">
-    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{chat.lastText}}
-    </p>
+    
+	<form name="agregarForm" novalidate>
+	<div class="list">
+	<label class="item item-input">
+  	<span class="input-label">Origen</span>
+  	<input type="text" name="origen"  ng-model="lugar[0].origen" required>
+   </label>
+   
+   <label class="item item-input">
+  	<span class="input-label">Destino</span>
+  	<input type="text" name="destino" ng-model="lugar[0].destino" required>
+   </label>
+   
+   <label class="item item-input">
+  	<span class="input-label">Fecha Inicio</span>
+  	<input type="tel" name="Fechainicio" ng-model="lugar[0].Fechainicio"  required>
+   </label>
+   
+   <label class="item item-input">
+  	<span class="input-label">Fecha Regreso</span>
+  	<input type="text" name="Fecharegreso" ng-model="lugar[0].Fecharegreso" required>
+   </label>
+   
+   <label class="item item-input">
+  	<span class="input-label">Num personas</span>
+  	<input type="text" name="Numpersonas"  ng-model="lugar[0].Numpersonas" required>
+   </label>
+   
+   <label class="item item-input">
+  	<span class="input-label">costo</span>
+  	<input type="text" name="costo" ng-model="lugar[0].costo" required>
+   </label>
+   </div>
+   
+   <div class="padding">
+    	<p ng-show="agregarForm.origen.$error.required">Escriba el lugar de origen</p>
+    	<p ng-show="agregarForm.destino.$error.required">Escriba su destino</p>
+    	<p ng-show="agregarForm.Fechainicio.$error.required">Escriba fecha de inicio</p>
+    	<p ng-show="agregarForm.Fecharegreso.$error.required">Escriba fecha de regreso</p>
+    	<p ng-show="agregarForm.numpersonas.$error.required">Escriba el numero de personas</p>
+    	<p ng-show="agregarForm.costo.$error.required">Costos</p>
+    	<p>{{ statusMessage }}</p>
+	</div>
+    
+	<input type="hidden" name="id" ng-model="lugar[0].id">
+   
+   <button type="button" class="button icon-left ion-compose button-positive" ng-disabled="agregarForm.$invalid" ng-click="guardar(persona[0])">
+  	Guardar
+   </button>
+   
+   </form>
+    
   </ion-content>
 </ion-view>
+
